@@ -1,18 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Update Client</h1>
-    
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
-    </form>
-</body>
-</html>
+{% extends "base.html" %}
+{% load bootstrap %}
+
+{% block title %} New client {% endblock %}
+
+{% block main %}
+
+    <div class="row">
+        <div class="col-7">
+            <h1>Update Client</h1>
+            <hr>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|bootstrap }}
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </div>
+        <div class="col-5">
+
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block footer %}
+
+<br>
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">Develop in Django 2.x</p>
+    </div>
+</footer>  
+
+{% endblock %}

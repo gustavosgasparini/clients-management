@@ -1,21 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
-    </head>
-    <body>
+{% extends "base.html" %}
+
+{% block title %} Index {% endblock %}
+
+{% block main %}
+
+    <div class="jumbotron">
         <h1>Clients webpage</h1>
-        <p></p>
-        {% if user.is_authenticated %}
-            <h1>Hello {{ user.username }}</h1>
-            <h3>Access the <a href="{% url 'client_list' %}">client list</a> page</h3>
-            <a href="{% url 'logout' %}"><button>Logout</button></a>          
-        {% else %}
-            <h2>login to have access the clients list</h2>
-            <a href="{% url 'login' %}"><button>Login</button></a>
-        {% endif %}
-    </body>
-</html>
+        <hr>
+        <div class="row">
+            {% if user.is_authenticated %}
+                <div class="col-4">
+                    <h2>Hello {{ user.username }}</h2>
+                    <p>Access the <a href="{% url 'client_list' %}">client list</a> page</p>
+                    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+                </div>
+                <div class="col-8">
+
+                </div>   
+            {% else %}
+                <div class="col-4">
+                    <p>Login to access the clients list</p>
+                    <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+                </div>
+                <div class="col-8">
+
+                </div>  
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block footer %}
+
+<br>
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">Develop in Django 2.x</p>
+    </div>
+</footer>  
+
+{% endblock %}

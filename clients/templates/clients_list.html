@@ -1,24 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %} Clients list {% endblock %}
+
+{% block main %}
+
     <h1>Clients list</h1>
-    <ul>
+    <hr>
+    <div class="jumbotron">
+    <ul class="list-group">
         {% for person in clients %}
-            <li>Client <strong>{{ person.first_name }} {{ person.last_name }}</strong>, with <strong>{{ person.age }}</strong> years old</li>
-            <a href="{% url 'client_update' person.pk %}"><button>Update</button></a> <a href="{% url 'client_delete' person.pk %}"><button>Delete</button></a>
-            <br>
-            <br>
+            <li class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h4 class="mb-1"> {{ person.first_name }} {{ person.last_name }} </h4> <br>
+                </div>
+                <strong>Age:</strong> {{ person.age }} years old <br>
+                {{ person.email }} <br><br>
+                <a href="{% url 'client_update' person.pk %}" class="btn btn-warning btn-sm">Update</a> <a href="{% url 'client_delete' person.pk %}" class="btn btn-danger btn-sm">Delete</a>
+            </li>        
         {% endfor %}
     </ul>
+    </div>
 
-    <a href="{% url 'client_new' %}"><button>New Client</button></a>
-    <br><br>
-    <a href="{% url 'index' %}"><button>Back to Index Page</button></a>
-</body>
-</html>
+    <a href="{% url 'client_new' %}" class="btn btn-success">New Client</a> 
+    <a href="{% url 'index' %}" class="btn btn-info">Index Page</a>
+
+{% endblock %}
+
+
+{% block footer %}
+
+<br>
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">Develop in Django 2.x</p>
+    </div>
+</footer>  
+
+{% endblock %}
