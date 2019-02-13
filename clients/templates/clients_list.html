@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Clients list</h1>
+    <ul>
+        {% for person in clients %}
+            <li>Client <strong>{{ person.first_name }} {{ person.last_name }}</strong>, with <strong>{{ person.age }}</strong> years old</li>
+            <a href="{% url 'client_update' person.pk %}"><button>Update</button></a> <a href="{% url 'client_delete' person.pk %}"><button>Delete</button></a>
+            <br>
+            <br>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'client_new' %}"><button>New Client</button></a>
+    <br><br>
+    <a href="{% url 'index' %}"><button>Back to Index Page</button></a>
+</body>
+</html>

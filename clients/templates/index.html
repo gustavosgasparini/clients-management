@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Clients webpage</h1>
+        <p></p>
+        {% if user.is_authenticated %}
+            <h1>Hello {{ user.username }}</h1>
+            <h3>Access the <a href="{% url 'client_list' %}">client list</a> page</h3>
+            <a href="{% url 'logout' %}"><button>Logout</button></a>          
+        {% else %}
+            <h2>login to have access the clients list</h2>
+            <a href="{% url 'login' %}"><button>Login</button></a>
+        {% endif %}
+    </body>
+</html>
