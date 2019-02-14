@@ -2,6 +2,7 @@
 Esse arquivo é um estudo usando Django 2.1 e deploy no Heroku.
 
 Acesse o deploy através deste site: https://clients-management02.herokuapp.com/
+
 usuário: admin
 senha: admin
 
@@ -11,6 +12,7 @@ A aplicação web basicamente tem a função de cadastrar uma lista de clientes 
 This file is a study using Django 2.1 and deploy on Heroku.
 
 You can access the site here: https://clients-management02.herokuapp.com/
+
 username: admin
 password: admin
 
